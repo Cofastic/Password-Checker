@@ -18,10 +18,10 @@ This is a simple Python command-line tool project to check if your passwords hav
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/pwned-password-checker.git
-cd pwned-password-checker'
+git clone https://github.com/Cofastic/Password-Checker.git
+cd Password-Checker
 ```
-Or download the <a href="https://github.com/Cofastic/Password-Checker/blob/main/source/main.py"> ZIP </a> and extract it.
+Or download the <a href="https://github.com/Cofastic/Password-Checker/blob/main/source/passwordchecker.py"> ZIP </a> and extract it.
 
 ### 2. Install Python (if not already installed)
 Check Python version:
@@ -43,15 +43,14 @@ pip install requests
 Run the script followed by the passwords you want to check:
 
 ```bash
-python main.py password123 qwerty123 abc123
+python passwordchecker.py password123 qwerty123 abc123
 ```
 ### 🔍 Example Output:
 ```bash
-Copy
-Edit
 password123 was found 21765 times... you should probably change it! >:)
 qwerty123 was found 98987 times... you should probably change it! >:)
 abc123 was NOT found. Carry on! :)
+done!
 ```
 
 ## ⚙️ How It Works
@@ -68,10 +67,16 @@ The script checks if the full hash exists in the returned list.
 ## 🛠 Advanced Usage
 Check passwords from a text file (Unix-based):
 ```bash
-for pw in $(cat passwords.txt); do python main.py "$pw"; done
+for pw in $(cat passwords.txt); do python passwordchecker.py "$pw"; done
+```
+
+Check passwords from a text file (Windows CLI):
+```bash
+python passwordchecker.py passwords.txt
 ```
 ## ❓ Troubleshooting
 ModuleNotFoundError: No module named 'requests'	-> Run pip install requests
+
 'python' is not recognized ->	Use python3 instead, or check Python is in PATH
 
 ## 🔐 Security & Privacy
