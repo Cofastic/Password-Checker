@@ -1,6 +1,7 @@
 import requests  # To make HTTP requests to the API
 import hashlib   # To securely hash the password
 import sys       # To access command-line arguments and exit the script
+import os      # To access environment variables
 
 # Function to request data from the HaveIBeenPwned API using the first 5 characters of the hashed password
 def req_api_data(query_char):
@@ -30,6 +31,9 @@ def pwn_api_check(password):
 
 # Main function to handle multiple passwords passed as command-line arguments
 def main(args):
+    if len(args) == 1 and os.path.isfile(args[0]):
+        with open(args[0], 'r') as f:
+            args = [line.strip() for line in f.readlines() if line.strip()] # Read passwords from file
     for password in args:
         count = pwn_api_check(password)  # Check each password
         if count:
